@@ -1,0 +1,10 @@
+# PLEASE KEEP THIS FILE ALPHABETICAL WITHIN SECTIONS
+
+# Development
+black==24.4.2
+pytest==8.3.1
+pytest-cov==5.0.0
+pytest-mock==3.14.0
+
+# Application
+pandas==2.2.2
