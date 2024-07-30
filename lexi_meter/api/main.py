@@ -6,25 +6,25 @@ app = FastAPI()
 
 
 class QuizManager:
-    """Manages all participent connections"""
+    """Manages all participant connections"""
 
     def __init__(self):
-        self.participent_connections: Dict[any, list] = {}
+        self.participant_connections: Dict[any, list] = {}
 
     async def connect(self, websocket: WebSocket, quiz_id):
         """Connects to quiz"""
         await websocket.accept()
 
-        if not self.participent_connections.get(quiz_id):
-            self.participent_connections[quiz_id] = []
-        self.participent_connections[quiz_id].append(websocket)
+        if not self.participant_connections.get(quiz_id):
+            self.participant_connections[quiz_id] = []
+        self.participant_connections[quiz_id].append(websocket)
 
     async def disconnect(self, websocket: WebSocket, quiz_id):
         """Disconnect form quiz"""
-        self.participent_connections[quiz_id].remove(websocket)
+        self.participant_connections[quiz_id].remove(websocket)
 
     async def broadcast(self, message: str, quiz_id: int):
-        """Broadcast message to participents"""
+        """Broadcast message to participants"""
         pass
 
 
@@ -45,13 +45,13 @@ async def create_quiz():
 
 @app.get("/get-available-quiz/", status_code=status.HTTP_200_OK)
 async def get_available_quiz():
-    """Retrieve list of available quizes"""
+    """Retrieve list of available quizzes"""
     pass
 
 
 @app.get("/get-quiz/{quiz_id}", status_code=status.HTTP_200_OK)
 async def get_quiz(quiz_id):
-    """Retrieves spesific quiz"""
+    """Retrieves specific quiz"""
     pass
 
 
