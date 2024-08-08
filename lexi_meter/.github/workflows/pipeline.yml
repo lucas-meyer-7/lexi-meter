@@ -45,7 +45,6 @@ jobs:
           pylint src/*.py src/tests/*.py
 
       # Run tests and make coverage report
-      # TODO: Test paths not resolving properly (need to investigate)
-      # - name: Run tests
-      #   run: |
-      #     pytest --cov-report term-missing --cov=. --cov-fail-under=0 ./
+      - name: Run tests
+        run: |
+          python -m pytest --cov-report term-missing --cov=. --cov-fail-under=0 tests/
