@@ -42,7 +42,8 @@ jobs:
       - name: Check linting and formatting
         run: |
           black ./ --check
-          pylint src/*.py src/tests/*.py
+#          pylint src/*.py src/tests/*.py
+          pylint lexi_meter/api/*.py
 
       # Run tests and make coverage report
       # TODO: Test paths not resolving properly (need to investigate)
