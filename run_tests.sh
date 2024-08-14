@@ -1,1 +1,1 @@
-python -m pytest --cov-report term-missing --cov=. --cov-fail-under=0 lexi_meter/tests/
+python -m pytest --cov-report term-missing --cov=. --cov-fail-under=0 tests/
