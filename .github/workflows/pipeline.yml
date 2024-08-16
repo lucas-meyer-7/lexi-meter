@@ -20,11 +20,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Set up Python 3.11.7
+      # Set up Python 3.11.9
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11.7
+          python-version: 3.11.9
 
       # Set up a virtual environment and activate it
       - name: Create virtual environment
@@ -45,7 +45,6 @@ jobs:
           pylint lexi_meter/api/*.py
 
       # Run tests and make coverage report
-      # TODO: Test paths not resolving properly (need to investigate)
-      # - name: Run tests
-      #   run: |
-      #     pytest --cov-report term-missing --cov=. --cov-fail-under=0 ./
+      - name: Run tests
+        run: |
+          source run_tests.sh
