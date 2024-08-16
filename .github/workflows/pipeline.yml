@@ -41,8 +41,7 @@ jobs:
       # Check linting and formatting
       - name: Check linting and formatting
         run: |
-          black ./ --check
-          pylint lexi_meter/api/*.py
+          source run_style.sh
 
       # Run tests and make coverage report
       - name: Run tests
