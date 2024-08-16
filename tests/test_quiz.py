@@ -2,8 +2,8 @@
 NOTE: Run via the run_scripts.sh script
 """
 
-import pytest
 import pandas as pd
+import pytest
 
 from lexi_meter.back_end.quiz import Quiz
 
@@ -16,6 +16,7 @@ def test_incorrect_cols():
     df.drop(columns=["question_nr"], inplace=True)
     with pytest.raises(ValueError):
         q = Quiz(df)
+        print(q)
 
 
 def test_check_answers():
@@ -23,6 +24,8 @@ def test_check_answers():
     Test if the quiz computes the score correctly.
     NOTE: This will have to change once Timothy incorporates his database schema.
     """
+    expected_participant_answers = 10
+
     df = pd.read_csv("tests/data/test_quiz_questions.csv")
     q = Quiz(df)
     participant_answers = [
@@ -37,7 +40,7 @@ def test_check_answers():
         {"question_nr": 9, "chosen_option": "option_c"},
         {"question_nr": 10, "chosen_option": "option_a"},
     ]
-    assert q.check_answers(participant_answers) == 10
+    assert q.check_answers(participant_answers) == expected_participant_answers
 
 
 def test_incorrect_answers_dict():
