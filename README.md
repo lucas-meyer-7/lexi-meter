@@ -12,7 +12,8 @@ We are tracking our progress in a shored [Google Doc](https://docs.google.com/do
 4. Install requirements (via the [requirements.txt](requirements.txt) file)
 5. Make your changes
 6. Run the tests and add more tests if necessary (use [run_tests.sh](run_tests.sh))
-7. Push your changes to your branch
-8. Create a pull request
+7. Run the style and formatter using [run_style.sh](run_style.sh)
+8. Push your changes to your branch
+9. Create a pull request
 
 **NB:** Please make sure to UPDATE the requirements.txt file if you add any new packages to the project.

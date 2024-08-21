@@ -1,6 +1,7 @@
-from fastapi import FastAPI, WebSocket, status, WebSocketDisconnect
-from typing import Dict
+"""The main script for the project"""
+
 import uvicorn
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, status
 
 app = FastAPI()
 
@@ -9,7 +10,7 @@ class QuizManager:
     """Manages all participant connections"""
 
     def __init__(self):
-        self.participant_connections: Dict[any, list] = {}
+        self.participant_connections: dict[any, list] = {}
 
     async def connect(self, websocket: WebSocket, quiz_id):
         """Connects to quiz"""
@@ -66,12 +67,13 @@ async def quiz(websocket: WebSocket, quiz_id: int, participant_id: int):
     await manager.connect(websocket, quiz_id)
     try:
         while True:
-            data = await websocket.receive_json()
+            # TODO: uncomment when we start using this. It is causing linting errors.
+            # data = await websocket.receive_json()
             """Where the magic happens when client is connected"""
 
     except WebSocketDisconnect:
         await manager.disconnect(websocket, quiz_id)
-        await manager.broadcast(f"Participant has left the quiz", quiz_id=quiz_id)
+        await manager.broadcast("Participant has left the quiz", quiz_id=quiz_id)
 
 
 if __name__ == "__main__":

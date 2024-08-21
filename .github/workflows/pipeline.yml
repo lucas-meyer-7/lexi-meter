@@ -6,8 +6,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "dev", "elmarie/*" ]
-#  pull_request:
-#    branches: [ "main" ]
+  pull_request:
+    branches: [ "main", "dev" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -41,8 +41,8 @@ jobs:
       # Check linting and formatting
       - name: Check linting and formatting
         run: |
-          black ./ --check
-          pylint lexi_meter/
+          ruff check . --diff
+          ruff format . --diff
 
       # Run tests and make coverage report
       - name: Run tests
