@@ -41,7 +41,8 @@ jobs:
       # Check linting and formatting
       - name: Check linting and formatting
         run: |
-          source run_style.sh
+          ruff check . --diff
+          ruff format . --diff
 
       # Run tests and make coverage report
       - name: Run tests
